@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-def index(request):
+@login_required
+def home(request):
     return render(request,'Neighbour/index.html')
 
 @login_required
@@ -15,7 +16,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('Neighbour:home'))
 
 def register(request):
     registered = False
@@ -38,7 +39,7 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
-    return render(request,'Neighbour/registration.html',{"user_from":user_form,"profile_form":profile_form,"registered":registered})
+    return render(request,'Neighbour/registration.html',{"user_form":user_form,"profile_form":profile_form,"registered":registered})
 
 def user_login(request):
     if request.method == 'POST':
@@ -48,7 +49,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('Neighbour:home'))
             else:
                 return HttpResponse("your account was inactive.")
 
