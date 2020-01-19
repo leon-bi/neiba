@@ -4,9 +4,9 @@
   <div class="jumbotron">
     <h1>Welcome to the Djungle !</h1>
     {% if user.is_authenticated %}
-        <h2>Hello {{ user.username }}</h2>
+    <h2>Hello {{ user.username }}</h2>
     {% else %}
-        <h2>Register or Login if you'd like to</h2>
+    <h2>Register or Login if you'd like to</h2>
     {% endif %}
   </div>
 </div>
@@ -33,7 +33,7 @@
 <body>
 
   <!-- Navigation -->
-  
+
 
   <!-- Page Content -->
   <div class="container">
@@ -46,48 +46,31 @@
         <h1 class="my-4">Page Heading
           <small>Secondary Text</small>
         </h1>
-
+        
+        
+        {% if posts %}
+        {% for post in posts %}
+          
+        
+          
         <!-- Blog Post -->
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top" src="{{post.image.url}} " alt="Card image cap" style="width: auto; height:400px;">
           <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <h2 class="card-title">{{post.title}}</h2>
+            <p class="card-text">{{post.content}}</p>
             <a href="#" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
+            Posted on {{post.date_posted |date:"F d, Y"}}
+            <a href="#"></a>
           </div>
         </div>
 
-        <!-- Blog Post -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
-
-        <!-- Blog Post -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
+        {% endfor %}
+        {% else %}
+        <h1>No posts available </h1>
+        {% endif %}
 
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
@@ -156,7 +139,8 @@
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new
+            Bootstrap 4 card containers!
           </div>
         </div>
 
