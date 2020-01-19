@@ -4,10 +4,12 @@ from django.contrib.auth import authenticate, login,logout
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .models import Post
 
 @login_required
 def home(request):
-    return render(request,'Neighbour/index.html')
+    posts=Post.objects.all()   
+    return render(request,'Neighbour/index.html',{"posts":posts})
 
 @login_required
 def special(request):
