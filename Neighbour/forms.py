@@ -1,5 +1,4 @@
 from django import forms
-from Neighbour.models import UserProfileInfo
 from django.contrib.auth.models import User
 
 
@@ -9,7 +8,4 @@ class UserForm (forms.ModelForm):
         model=User
         fields = ('username','password','email')
 
-class UserProfileInfoForm(forms.ModelForm):
-    class Meta():
-        model = UserProfileInfo
-        fields = ('portfolio_site','profile_pic')
+

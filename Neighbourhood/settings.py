@@ -33,8 +33,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-
+    'crispy_forms',
     'Neighbour',
+    'users',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
 ]
 
 MIDDLEWARE = [
@@ -138,4 +138,6 @@ STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_URL = 'Neighbour/user_login/'
+LOGIN_REDIRECT_URL = 'Neighbour:home'
+LOGIN_URL = 'login'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

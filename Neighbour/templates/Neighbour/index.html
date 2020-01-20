@@ -1,8 +1,8 @@
 {% extends "Neighbour/base.html" %}
-{% block body_block %}
+{% block content %}
 <div class="container">
   <div class="jumbotron">
-    <h1>Welcome to the Djungle !</h1>
+    <h1>Welcome to the Neighbour !</h1>
     {% if user.is_authenticated %}
     <h2>Hello {{ user.username }}</h2>
     {% else %}
@@ -43,8 +43,8 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">Page Heading
-          <small>Secondary Text</small>
+        <h1 class="my-4">{{ user.username }} 
+          
         </h1>
         
         
@@ -73,15 +73,6 @@
         {% endif %}
 
         <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
-
       </div>
 
       <!-- Sidebar Widgets Column -->
@@ -168,4 +159,4 @@
 
 </html>
 
-{% endblock %}
+{% endblock content %}

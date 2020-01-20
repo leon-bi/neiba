@@ -1,6 +1,6 @@
 from django.contrib import admin
-from Neighbour.models import UserProfileInfo,Post
+from Neighbour.models import Post
 # Register your models here.
-admin.site.register(UserProfileInfo) 
+ 
 admin.site.register(Post) 
 
