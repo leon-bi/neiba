@@ -13,10 +13,18 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title 
+    
+    @classmethod
+    def search_by_title(cls,search_term):
+        post= cls.objects.filter(title__icontains=search_term)
+        return post
+
+
 
     
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+        
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=100)
