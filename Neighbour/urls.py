@@ -25,8 +25,8 @@ urlpatterns = [
     path('neiba/<int:pk>/delete/',NeighbourhoodDeleteView.as_view(),name = 'neiba-delete'),
     path('business/<int:pk>/delete/',BusinessDeleteView.as_view(),name = 'business-delete'),
 
-    path('search/', views.search_results, name='search_results') 
-    
+    path('search/', views.search_results, name='search_results')  
+
 
     
 ]
