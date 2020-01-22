@@ -1,0 +1,15 @@
+{% extends "Neighbour/base.html" %}
+
+{% block content %}
+    <h1>Neighbour page</h1>
+    {% for neiba in neibas  %}
+    <p>{{ neiba.name }}</p>
+    <a href="{% url 'neiba-detail' neiba.id %}" class="btn btn-primary">View</a>
+    
+    
+        
+        
+    {% endfor %}
+        
+{% endblock content %}
+    

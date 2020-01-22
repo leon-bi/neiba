@@ -1,0 +1,15 @@
+{% extends "Neighbour/base.html" %}
+
+{% block content %}
+<h1>Business page</h1>
+
+{% for bizz in business %}
+    {{ bizz.name }}
+    <div>
+        <a href="{% url 'business-detail' bizz.id %}" class="btn btn-primary">View</a>
+
+    </div>
+{% endfor %}
+    
+{% endblock content %}
+    

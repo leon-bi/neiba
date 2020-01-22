@@ -1,0 +1,24 @@
+{% extends "Neighbour/base.html" %}
+{% block content %}
+<img class="rounded-circle account-img" src="{{ object.author.profile.profile_pic.url }} " style="height: 100px;">
+<h2>{{ post.author }}</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <a class="card-title" href="  ">{{object.name}}</a></h2>
+        <p class="card-text">{{object.location}}</p>
+    </div>
+    <div class="card-footer text-muted">
+        Posted on {{object.date_posted |date:"F d, Y"}}
+
+        
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+        </div>
+        
+
+        <a href="#"></a>
+    </div>
+</div>
+
+{% endblock content %}

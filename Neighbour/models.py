@@ -21,9 +21,14 @@ class Post(models.Model):
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    occupants = models.IntegerField()
+    occupants = models.IntegerField(auto_created=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('neiba-detail', kwargs={'pk': self.pk})
 
 
 class Business(models.Model):
@@ -31,3 +36,8 @@ class Business(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('business-detail', kwargs={'pk': self.pk})

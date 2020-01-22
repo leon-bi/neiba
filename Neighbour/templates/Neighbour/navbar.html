@@ -14,8 +14,19 @@
         </ul>
         <div class="navbar-nav">
             
+            
             {% if user.is_authenticated  %}
-            <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                  <a class="nav-item nav-link" href="{% url 'neiba-create' %}">New Neighbour Post</a>
+                  <a class="nav-item nav-link" href="{% url 'business-create' %}">New Business Post</a>                  
+                  
+              </li>
             <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
             <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
 
