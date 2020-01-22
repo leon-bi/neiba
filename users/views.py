@@ -3,7 +3,8 @@ from django.contrib import messages
 from .forms import UserRegisterForm,ProfileUpdateForm,UserUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-
+from Neighbour.models import Post
+from Neighbour.views import PostListView
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -20,6 +21,8 @@ def register(request):
 
 @login_required
 def profile(request):
+    user = request.user
+    posts = user.post_set.all
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
@@ -32,7 +35,7 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
-    return render(request,'users/profile.html',{"u_form":u_form,"p_form":p_form})   
+    return render(request,'users/profile.html',{"u_form":u_form,"p_form":p_form ,"posts":posts})   
 
 
 
